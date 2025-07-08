@@ -1,1 +1,975 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Snax - Find Your Perfect TV Bundle Worldwide</title>
+    <meta name="description" content="Compare top online TV bundles worldwide. Find the best streaming services, pricing, and features for your entertainment needs with Show Snax.">
+    <meta name="keywords" content="tv bundles, streaming services, online tv, netflix, disney+, hulu, amazon prime, comparison">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23667eea" width="1200" height="600"/><path fill="%23764ba2" d="M0,300 Q300,200 600,300 T1200,300 V600 H0 Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Main Content */
+        .content {
+            background: white;
+            padding: 3rem 0;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Platform Comparison Grid */
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .platform-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .platform-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+
+        .platform-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .platform-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .platform-logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+
+        .platform-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .platform-details {
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #666;
+        }
+
+        .detail-value {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .pricing {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .price-period {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .features li {
+            padding: 0.3rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .availability {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .availability h4 {
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .countries {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .country-tag {
+            background: #e9ecef;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Policies Section */
+        .policies {
+            background: #f8f9fa;
+            padding: 3rem 0;
+        }
+
+        .policy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .policy-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .policy-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #667eea;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .platform-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .countries {
+                justify-content: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .platform-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .platform-card:nth-child(even) {
+            animation-delay: 0.2s;
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Show Snax</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#platforms">Platforms</a></li>
+                <li><a href="#comparison">Compare</a></li>
+                <li><a href="#policies">Policies</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Find Your Perfect TV Bundle</h1>
+            <p>Compare top streaming platforms worldwide. Get the best entertainment value with our comprehensive guide to online TV bundles.</p>
+            <a href="#platforms" class="cta-button">Compare Now</a>
+        </div>
+    </section>
+
+    <main class="content">
+        <div class="container">
+            <section class="section" id="platforms">
+                <h2>Top Streaming Platforms Worldwide</h2>
+                <div class="platform-grid">
+                    <!-- Netflix -->
+                    <div class="platform-card">
+                        <div class="platform-header">
+                            <div class="platform-logo">N</div>
+                            <div class="platform-name">Netflix</div>
+                        </div>
+                        <div class="pricing">
+                            <div class="price">$6.99 - $22.99</div>
+                            <div class="price-period">per month</div>
+                        </div>
+                        <div class="platform-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Content Library:</span>
+                                <span class="detail-value">15,000+ titles</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">4K Content:</span>
+                                <span class="detail-value">Yes (Premium)</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Simultaneous Streams:</span>
+                                <span class="detail-value">1-4 devices</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Offline Download:</span>
+                                <span class="detail-value">Yes</span>
+                            </div>
+                        </div>
+                        <ul class="features">
+                            <li>Original series and movies</li>
+                            <li>Multi-language support</li>
+                            <li>Personalized recommendations</li>
+                            <li>Kids profiles with parental controls</li>
+                            <li>Mobile gaming included</li>
+                        </ul>
+                        <div class="availability">
+                            <h4>Available in:</h4>
+                            <div class="countries">
+                                <span class="country-tag">USA</span>
+                                <span class="country-tag">Canada</span>
+                                <span class="country-tag">UK</span>
+                                <span class="country-tag">Australia</span>
+                                <span class="country-tag">190+ countries</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Disney+ -->
+                    <div class="platform-card">
+                        <div class="platform-header">
+                            <div class="platform-logo">D+</div>
+                            <div class="platform-name">Disney+</div>
+                        </div>
+                        <div class="pricing">
+                            <div class="price">$7.99 - $13.99</div>
+                            <div class="price-period">per month</div>
+                        </div>
+                        <div class="platform-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Content Library:</span>
+                                <span class="detail-value">500+ movies, 15,000+ episodes</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">4K Content:</span>
+                                <span class="detail-value">Yes</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Simultaneous Streams:</span>
+                                <span class="detail-value">4 devices</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Offline Download:</span>
+                                <span class="detail-value">Yes</span>
+                            </div>
+                        </div>
+                        <ul class="features">
+                            <li>Disney, Marvel, Star Wars content</li>
+                            <li>Pixar and National Geographic</li>
+                            <li>Family-friendly content</li>
+                            <li>IMAX Enhanced available</li>
+                            <li>GroupWatch feature</li>
+                        </ul>
+                        <div class="availability">
+                            <h4>Available in:</h4>
+                            <div class="countries">
+                                <span class="country-tag">USA</span>
+                                <span class="country-tag">Canada</span>
+                                <span class="country-tag">Europe</span>
+                                <span class="country-tag">Asia-Pacific</span>
+                                <span class="country-tag">100+ countries</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Amazon Prime Video -->
+                    <div class="platform-card">
+                        <div class="platform-header">
+                            <div class="platform-logo">P</div>
+                            <div class="platform-name">Prime Video</div>
+                        </div>
+                        <div class="pricing">
+                            <div class="price">$8.99 - $14.98</div>
+                            <div class="price-period">per month</div>
+                        </div>
+                        <div class="platform-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Content Library:</span>
+                                <span class="detail-value">24,000+ movies, 2,100+ shows</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">4K Content:</span>
+                                <span class="detail-value">Yes</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Simultaneous Streams:</span>
+                                <span class="detail-value">3 devices</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Offline Download:</span>
+                                <span class="detail-value">Yes</span>
+                            </div>
+                        </div>
+                        <ul class="features">
+                            <li>Amazon Original series</li>
+                            <li>Free shipping with Prime</li>
+                            <li>Rent/buy new releases</li>
+                            <li>X-Ray feature for trivia</li>
+                            <li>Prime Music included</li>
+                        </ul>
+                        <div class="availability">
+                            <h4>Available in:</h4>
+                            <div class="countries">
+                                <span class="country-tag">USA</span>
+                                <span class="country-tag">UK</span>
+                                <span class="country-tag">Germany</span>
+                                <span class="country-tag">India</span>
+                                <span class="country-tag">240+ countries</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- HBO Max -->
+                    <div class="platform-card">
+                        <div class="platform-header">
+                            <div class="platform-logo">M</div>
+                            <div class="platform-name">Max (HBO Max)</div>
+                        </div>
+                        <div class="pricing">
+                            <div class="price">$9.99 - $19.99</div>
+                            <div class="price-period">per month</div>
+                        </div>
+                        <div class="platform-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Content Library:</span>
+                                <span class="detail-value">10,000+ hours</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">4K Content:</span>
+                                <span class="detail-value">Yes (Ultimate)</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Simultaneous Streams:</span>
+                                <span class="detail-value">2-4 devices</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Offline Download:</span>
+                                <span class="detail-value">Yes</span>
+                            </div>
+                        </div>
+                        <ul class="features">
+                            <li>HBO premium content</li>
+                            <li>Warner Bros. movies</li>
+                            <li>DC Comics content</li>
+                            <li>Same-day theatrical releases</li>
+                            <li>CNN and other news content</li>
+                        </ul>
+                        <div class="availability">
+                            <h4>Available in:</h4>
+                            <div class="countries">
+                                <span class="country-tag">USA</span>
+                                <span class="country-tag">Latin America</span>
+                                <span class="country-tag">Caribbean</span>
+                                <span class="country-tag">Europe (select)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hulu -->
+                    <div class="platform-card">
+                        <div class="platform-header">
+                            <div class="platform-logo">H</div>
+                            <div class="platform-name">Hulu</div>
+                        </div>
+                        <div class="pricing">
+                            <div class="price">$7.99 - $17.99</div>
+                            <div class="price-period">per month</div>
+                        </div>
+                        <div class="platform-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Content Library:</span>
+                                <span class="detail-value">3,000+ shows, 1,500+ movies</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">4K Content:</span>
+                                <span class="detail-value">Limited</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Simultaneous Streams:</span>
+                                <span class="detail-value">2 devices</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Offline Download:</span>
+                                <span class="detail-value">Yes (select titles)</span>
+                            </div>
+                        </div>
+                        <ul class="features">
+                            <li>Next-day TV episodes</li>
+                            <li>Hulu Originals</li>
+                            <li>Live TV option available</li>
+                            <li>FX and ABC content</li>
+                            <li>Ad-supported and ad-free tiers</li>
+                        </ul>
+                        <div class="availability">
+                            <h4>Available in:</h4>
+                            <div class="countries">
+                                <span class="country-tag">USA only</span>
+                                <span class="country-tag">US territories</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Apple TV+ -->
+                    <div class="platform-card">
+                        <div class="platform-header">
+                            <div class="platform-logo">A</div>
+                            <div class="platform-name">Apple TV+</div>
+                        </div>
+                        <div class="pricing">
+                            <div class="price">$6.99</div>
+                            <div class="price-period">per month</div>
+                        </div>
+                        <div class="platform-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Content Library:</span>
+                                <span class="detail-value">200+ originals</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">4K Content:</span>
+                                <span class="detail-value">Yes</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Simultaneous Streams:</span>
+                                <span class="detail-value">6 devices</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Offline Download:</span>
+                                <span class="detail-value">Yes</span>
+                            </div>
+                        </div>
+                        <ul class="features">
+                            <li>High-quality original content</li>
+                            <li>Dolby Vision and Atmos</li>
+                            <li>Family sharing</li>
+                            <li>No ads</li>
+                            <li>Apple device integration</li>
+                        </ul>
+                        <div class="availability">
+                            <h4>Available in:</h4>
+                            <div class="countries">
+                                <span class="country-tag">USA</span>
+                                <span class="country-tag">Canada</span>
+                                <span class="country-tag">UK</span>
+                                <span class="country-tag">Australia</span>
+                                <span class="country-tag">100+ countries</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="comparison">
+                <h2>Bundle Comparison Guide</h2>
+                <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem; color: #666;">
+                    Choose the perfect combination of services based on your viewing preferences and budget. 
+                    Consider factors like content variety, simultaneous streams, and regional availability.
+                </p>
+                
+                <div class="platform-grid">
+                    <div class="platform-card">
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">Budget Bundle</h3>
+                        <div class="pricing">
+                            <div class="price">$14.98</div>
+                            <div class="price-period">per month</div>
+                        </div>
+                        <ul class="features">
+                            <li>Netflix Basic + Apple TV+</li>
+                            <li>Great for casual viewers</li>
+                            <li>High-quality originals</li>
+                            <li>Ad-free Apple content</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="platform-card">
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">Family Bundle</h3>
+                        <div class="pricing">
+                            <div class="price">$22.98</div>
+                            <div class="price-period">per month</div>
+                        </div>
+                        <ul class="features">
+                            <li>Disney+ + Netflix Standard</li>
+                            <li>Perfect for families</li>
+                            <li>Kids and adult content</li>
+                            <li>Multiple simultaneous streams</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="platform-card">
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">Premium Bundle</h3>
+                        <div class="pricing">
+                            <div class="price">$42.97</div>
+                            <div class="price-period">per month</div>
+                        </div>
+                        <ul class="features">
+                            <li>Netflix Premium + Max + Disney+</li>
+                            <li>Comprehensive content library</li>
+                            <li>4K streaming on all platforms</li>
+                            <li>Maximum simultaneous streams</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <section class="policies" id="policies">
+        <div class="container">
+            <h2>Policies & Important Information</h2>
+            <div class="policy-grid">
+                <div class="policy-card">
+                    <h3>Privacy Policy</h3>
+                    <p>We respect your privacy and do not collect personal information without consent. We use cookies to enhance your browsing experience and provide personalized recommendations. You can manage cookie preferences in your browser settings.</p>
+                </div>
+                
+                <div class="policy-card">
+                    <h3>Terms of Service</h3>
+                    <p>By using Show Snax, you agree to our terms of service. We provide information for comparison purposes only. All pricing and availability information is subject to change by the respective streaming services.</p>
+                </div>
+                
+                <div class="policy-card">
+                    <h3>Disclaimer</h3>
+                    <p>Show Snax is an independent comparison website. We are not affiliated with any streaming service mentioned. Prices and features may vary by region and are subject to change. Please verify current pricing with the official provider.</p>
+                </div>
+                
+                <div class="policy-card">
+                    <h3>Affiliate Disclosure</h3>
+                    <p>Show Snax may receive compensation when you sign up for services through our links. This does not affect our editorial independence or the accuracy of our comparisons. Our recommendations are based on thorough research and analysis.</p>
+                </div>
+                
+                <div class="policy-card">
+                    <h3>Content Accuracy</h3>
+                    <p>We strive to provide accurate and up-to-date information. However, streaming services frequently update their offerings, pricing, and availability. We recommend checking directly with providers for the most current information.</p>
+                </div>
+                
+                <div class="policy-card">
+                    <h3>Geographic Restrictions</h3>
+                    <p>Content availability varies by geographic location due to licensing agreements. Services may not be available in all countries. VPN usage may violate the terms of service of streaming platforms.</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 2rem; padding: 1.5rem; background: white; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                <h3 style="color: #667eea; margin-bottom: 1rem;">Google AdSense Policy Compliance</h3>
+                <p>This website complies with Google AdSense policies. We maintain editorial independence and clearly distinguish between editorial content and advertisements. All sponsored content is clearly marked. We do not engage in prohibited practices such as click fraud or deceptive advertising.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Show Snax</h3>
+                    <p>Your trusted guide to finding the perfect streaming bundle worldwide. Compare, save, and enjoy the best entertainment options tailored to your needs.</p>
+                    <div style="margin-top: 1rem;">
+                        <p><strong>Email:</strong> info@showsnax.com</p>
+                        <p><strong>Phone:</strong> +91-9876-543-210</p>
+                        <p><strong>Address:</strong> 456 Tech Tower, MG Road, Jaipur, Rajasthan 302001, India</p>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#platforms">All Platforms</a></li>
+                        <li><a href="#comparison">Bundle Comparison</a></li>
+                        <li><a href="#policies">Policies</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Popular Platforms</h3>
+                    <ul>
+                        <li><a href="#netflix">Netflix</a></li>
+                        <li><a href="#disney">Disney+</a></li>
+                        <li><a href="#prime">Prime Video</a></li>
+                        <li><a href="#hbo">HBO Max</a></li>
+                        <li><a href="#hulu">Hulu</a></li>
+                        <li><a href="#apple">Apple TV+</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Regional Guides</h3>
+                    <ul>
+                        <li><a href="#usa">United States</a></li>
+                        <li><a href="#canada">Canada</a></li>
+                        <li><a href="#uk">United Kingdom</a></li>
+                        <li><a href="#australia">Australia</a></li>
+                        <li><a href="#europe">Europe</a></li>
+                        <li><a href="#asia">Asia Pacific</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#guide">Streaming Guide</a></li>
+                        <li><a href="#calculator">Bundle Calculator</a></li>
+                        <li><a href="#news">Industry News</a></li>
+                        <li><a href="#reviews">Platform Reviews</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#support">Support</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                        <li><a href="#cookies">Cookie Policy</a></li>
+                        <li><a href="#disclaimer">Disclaimer</a></li>
+                        <li><a href="#affiliate">Affiliate Disclosure</a></li>
+                        <li><a href="#dmca">DMCA Notice</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Show Snax. All rights reserved. | Designed with ❤️ for streaming enthusiasts worldwide.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+                    Last updated: January 2025 | Information subject to change | Not affiliated with any streaming service
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Platform card animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all platform cards
+        document.querySelectorAll('.platform-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Dynamic price calculator
+        function calculateBundlePrice(platforms) {
+            const prices = {
+                'netflix': 15.49,
+                'disney': 7.99,
+                'prime': 8.99,
+                'hbo': 15.99,
+                'hulu': 12.99,
+                'apple': 6.99
+            };
+            
+            return platforms.reduce((total, platform) => {
+                return total + (prices[platform] || 0);
+            }, 0);
+        }
+
+        // Add interactive features
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to platform cards
+            const cards = document.querySelectorAll('.platform-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Add click tracking for analytics (placeholder)
+            const buttons = document.querySelectorAll('.cta-button');
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Analytics tracking would go here
+                    console.log('CTA clicked:', this.textContent);
+                });
+            });
+        });
+
+        // Responsive navigation toggle
+        function toggleMobileNav() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        // Add mobile menu button for smaller screens
+        if (window.innerWidth <= 768) {
+            const nav = document.querySelector('nav');
+            const mobileMenuBtn = document.createElement('button');
+            mobileMenuBtn.innerHTML = '☰';
+            mobileMenuBtn.style.cssText = 'background: none; border: none; font-size: 1.5rem; cursor: pointer; display: block;';
+            mobileMenuBtn.onclick = toggleMobileNav;
+            nav.appendChild(mobileMenuBtn);
+        }
+    </script>
+</body>
+</html>
